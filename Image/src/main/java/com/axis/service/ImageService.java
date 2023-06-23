@@ -47,8 +47,15 @@ public class ImageService {
 						fileName(file.getOriginalFilename())
 						. type(file.getContentType()) 
 						. imageData(Util.compressImage(file.getBytes())).build());
+		long id = image.getId();
+		String fileName = "Customer -"+ id;
+		image.setFileName(fileName);
+		repository.save(image);
+		
 				if(image != null) {
-					return "fileUploaded successfully : " +file.getOriginalFilename(); 
+
+					return fileName  ; 
+					
 				}
 				
 				return null;
